@@ -26,13 +26,13 @@ app.get('/api', (req, res) => {
 		unix: Math.floor(now / 1000),
 		utc: d.toUTCString()
 	});
-})
+});
 
-app.get('/api/:date', (req, res) => {	
-	let d = new Date(req.params.date);
+app.get('/api/:date?', (req, res) => {	
+	let d = new Date(parseInt(req.params.date));
 
 	// check if unix timestamp given, and convert
-	if (isNaN(d)) d = new Date(req.params.date * 1000);
+	if (isNaN(d)) d = new Date(parseInt(req.params.date));
 
 	// check if invalid date given
 	if (isNaN(d)) res.json({
@@ -47,6 +47,6 @@ app.get('/api/:date', (req, res) => {
 });
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(/*process.env.PORT*/3000, function () {
   console.log('🎉 Your app is listening on port ' + listener.address().port + ' 🎉');
 });
