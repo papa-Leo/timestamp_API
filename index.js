@@ -23,7 +23,7 @@ app.get('/api', (req, res) => {
 	let d = new Date(now);
 
 	res.json({
-		unix: Math.floor(now / 1000),
+		unix: Math.floor(now),
 		utc: d.toUTCString()
 	});
 });
@@ -41,7 +41,7 @@ app.get('/api/:date?', (req, res) => {
 
 	// response object
 	res.json({
-		unix: Math.floor(d.getTime() / 1000),
+		unix: Math.floor(d.getTime()),
 		utc: d.toUTCString()
 	});
 });
