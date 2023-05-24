@@ -29,7 +29,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/api/:date?', (req, res) => {	
-	let d = new Date(parseInt(req.params.date));
+	let d = new Date(req.params.date);
 
 	// check if unix timestamp given, and convert
 	if (isNaN(d)) d = new Date(parseInt(req.params.date));
